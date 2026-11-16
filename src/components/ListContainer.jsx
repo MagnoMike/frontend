@@ -1,17 +1,19 @@
-const ListContainer = ({ data }) => {
+
+const ListContainer = ({ data, onDeleteStudent }) => {
     return (
-        <>
-         <section id = "listContainer">
+        <section id="listContainer">
             {data.map((student) => (
-                <article>
-                    <h1> {student.name}</h1>
-                    <p> {student.program}</p>
-                    <button>Delete</button>
-                    </article>
+                <article key={student.id}>
+                    <h1>{student.name}</h1>
+                    <p>{student.course}</p>
+
+                    <button onClick={() => onDeleteStudent(student.id)}>
+                        Delete
+                    </button>
+                </article>
             ))}
-         </section>
-         </>
-    )
-}
+        </section>
+    );
+};
 
 export default ListContainer;

@@ -1,4 +1,5 @@
 /* ===== GLOBAL STYLES ===== */
+
 * {
     margin: 0;
     padding: 0;
@@ -13,8 +14,10 @@ body {
     color: #332044;
 }
 
+
 /* ===== HEADER ===== */
-#headerContainer {
+
+#HeaderContainer {
     max-width: 900px;
     margin: 0 auto 30px;
     padding: 40px 25px;
@@ -25,7 +28,7 @@ body {
     box-shadow: 0 10px 30px rgba(100, 50, 130, 0.12);
 }
 
-#headerContainer > h1 {
+#HeaderContainer>h1 {
     margin-bottom: 10px;
     font-size: clamp(1.8rem, 4vw, 2.5rem);
     font-weight: 800;
@@ -33,15 +36,17 @@ body {
     letter-spacing: -1px;
 }
 
-#headerContainer > small {
+#HeaderContainer>small {
     display: block;
     font-size: 0.95rem;
     color: #786583;
     line-height: 1.6;
 }
 
+
 /* ===== FORM CONTAINER ===== */
-#formContainer {
+
+#FormContainer {
     max-width: 700px;
     margin: 0 auto 35px;
     padding: 30px;
@@ -51,21 +56,23 @@ body {
     box-shadow: 0 8px 25px rgba(100, 50, 130, 0.10);
 }
 
+
 /* ===== INPUT FIELDS ===== */
-#formContainer > #studentForm > .input-field {
+
+#FormContainer>#studentForm>.input-field {
     display: flex;
     flex-direction: column;
     margin-bottom: 18px;
 }
 
-#formContainer > #studentForm > .input-field > label {
+#FormContainer>#studentForm>.input-field>label {
     margin: 0 0 8px;
     font-size: 0.95rem;
     font-weight: 700;
     color: #6b21a8;
 }
 
-#formContainer > #studentForm > .input-field > input {
+#FormContainer>#studentForm>.input-field>input {
     width: 100%;
     padding: 13px 15px;
     border: 1px solid #e0c7f5;
@@ -77,22 +84,24 @@ body {
     transition: border-color 0.25s, box-shadow 0.25s;
 }
 
-#formContainer > #studentForm > .input-field > input::placeholder {
+#FormContainer>#studentForm>.input-field>input::placeholder {
     color: #b6a5c4;
 }
 
-#formContainer > #studentForm > .input-field > input:focus {
+#FormContainer>#studentForm>.input-field>input:focus {
     border-color: #a855f7;
     box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.12);
 }
 
+
 /* ===== SUBMIT BUTTON ===== */
-#formContainer > #studentForm > :last-child {
+
+#FormContainer>#studentForm> :last-child {
     display: flex;
     justify-content: center;
 }
 
-#formContainer > #studentForm :nth-last-child(1) > button {
+#FormContainer>#studentForm :nth-last-child(1)>button {
     margin-top: 12px;
     padding: 13px 30px;
     border: none;
@@ -106,17 +115,19 @@ body {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-#formContainer > #studentForm :nth-last-child(1) > button:hover {
+#FormContainer>#studentForm :nth-last-child(1)>button:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(159, 76, 238, 0.35);
 }
 
-#formContainer > #studentForm :nth-last-child(1) > button:active {
+#FormContainer>#studentForm :nth-last-child(1)>button:active {
     transform: translateY(0);
 }
 
+
 /* ===== STUDENT LIST / GRID ===== */
-#listContainer {
+
+#ListContainer {
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
@@ -125,8 +136,10 @@ body {
     align-items: stretch;
 }
 
+
 /* ===== STUDENT CARD ===== */
-#listContainer > .list-item {
+
+#ListContainer>.list-item {
     padding: 24px;
     text-align: center;
     background: rgba(255, 255, 255, 0.9);
@@ -136,12 +149,12 @@ body {
     transition: transform 0.25s, box-shadow 0.25s;
 }
 
-#listContainer > .list-item:hover {
+#ListContainer>.list-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 25px rgba(100, 50, 130, 0.15);
 }
 
-#listContainer > .list-item > h2 {
+#ListContainer>.list-item>h2 {
     margin-bottom: 12px;
     font-size: 1.2rem;
     font-weight: 800;
@@ -149,7 +162,7 @@ body {
     overflow-wrap: anywhere;
 }
 
-#listContainer > .list-item > p {
+#ListContainer>.list-item>p {
     margin: 7px 0;
     font-size: 0.9rem;
     line-height: 1.6;
@@ -157,8 +170,10 @@ body {
     overflow-wrap: anywhere;
 }
 
+
 /* ===== CARD BUTTON ===== */
-#listContainer > .list-item > button {
+
+#ListContainer>.list-item>button {
     margin-top: 15px;
     padding: 9px 18px;
     border: 1px solid #e9b8c7;
@@ -171,46 +186,42 @@ body {
     transition: background 0.2s, color 0.2s;
 }
 
-#listContainer > .list-item > button:hover {
+#ListContainer>.list-item>button:hover {
     background: #be185d;
     color: rgb(243, 237, 237);
 }
 
+
 /* ===== RESPONSIVE DESIGN ===== */
+
 @media (max-width: 768px) {
     body {
         padding: 20px 15px;
     }
-
-    #headerContainer {
+    #HeaderContainer {
         margin-top: 10px;
         padding: 30px 20px;
     }
-
-    #formContainer {
+    #FormContainer {
         padding: 22px;
     }
-
-    #listContainer {
+    #ListContainer {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 15px;
     }
 }
 
 @media (max-width: 480px) {
-    #headerContainer {
+    #HeaderContainer {
         padding: 25px 15px;
     }
-
-    #formContainer {
+    #FormContainer {
         padding: 18px;
     }
-
-    #listContainer {
+    #ListContainer {
         grid-template-columns: 1fr;
     }
-
-    #formContainer > #studentForm :nth-last-child(1) > button {
+    #FormContainer>#studentForm :nth-last-child(1)>button {
         width: 100%;
     }
 }

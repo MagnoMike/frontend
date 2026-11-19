@@ -1,5 +1,5 @@
 import './style.css';
-import Studentpage from './pages/studentpage';
+import Studentpage from './pages/Studentpage';
 
 function App() {
   return (

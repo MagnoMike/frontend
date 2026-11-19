@@ -1,75 +1,47 @@
-
-import { useState, useEffect } from "react";
-import HeaderContainer from "../components/HeaderContainer";
-import StudentContainer from "../components/StudentContainer";
-import ListContainer from "../components/ListContainer";
+import FormContainer from '../components/FormContainer';
+import HeaderContainer from '../components/HeaderContainer';
+import ListContainer from '../components/ListContainer';
+import { useState } from 'react';
 
 const Studentpage = () => {
     const [students, setStudents] = useState([]);
 
-    const API_URL = "http://localhost:3000/student";
-
-    const fetchStudents = async () => {
-        try {
-            const response = await fetch(`${API_URL}/all`);
-            const result = await response.json();
-
-            setStudents(result);
-        } catch (error) {
-            console.log("Error fetching students:", error);
+    const getData = async () =>{
+        const response = await fetch('http://127.0.0.1:3000/student');
+        if (!response.ok) {
+            throw new Error('Unable to fetch data');
         }
-    };
+        const data = await response.json();
+    return data;
+    }
+    getData().then((result) => {
+        setStudents(result);
+    }).catch((e) =>{
+        console.log(e.message);
+    })
 
-    useEffect(() => {
-        fetchStudents();
-    }, []);
-
-    const handleAddStudent = async (student) => {
-        try {
-            const response = await fetch(API_URL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(student)
-            });
-
-            if (!response.ok) {
-                throw new Error("Failed to add student");
-            }
-
-            fetchStudents();
-        } catch (error) {
-            console.log("Error adding student:", error);
+    const deleteStudent = async (id) => {
+       try {
+         const response = await fetch(`http://127.0.0.1:3000/student/${id}`, {
+            method: 'DELETE'
+        });
+         if (!response.ok) {
+            throw new Error('Unable to delete student');
         }
-    };
-
-    const handleDeleteStudent = async (id) => {
-        try {
-            const response = await fetch(`${API_URL}/${id}`, {
-                method: "DELETE"
-            });
-
-            if (!response.ok) {
-                throw new Error("Failed to delete student");
-            }
-
-            fetchStudents();
-        } catch (error) {
-            console.log("Error deleting student:", error);
+        if (response.ok) {
+         console.log('student deleted');
         }
-    };
+       }catch (e) {
+        console.log(e.message);
+       }
+    }
 
-    return (
-        <>
-            <HeaderContainer />
-            <StudentContainer onAddStudent={handleAddStudent} />
-            <ListContainer
-                data={students}
-                onDeleteStudent={handleDeleteStudent}
-            />
-        </>
-    );
-};
-
+return (
+    <>
+    <HeaderContainer />
+    <FormContainer />
+    <ListContainer data={students} handleClick={deleteStudent} />
+    </>
+)   
+}
 export default Studentpage;
